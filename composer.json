@@ -1,0 +1,15 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Hangman\\": "src/"
+        }
+    },
+    "require": {
+        "league/climate": "^3.2",
+        "phpunit/phpunit": "^4.8",
+        "beberlei/assert": "^2.5"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^2.6"
+    }
+}
