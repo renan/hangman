@@ -56,7 +56,11 @@ class Console
         while (($word = $this->wordRandomizer->next()) !== null) {
             $game = new Game($word);
             
-            $this->playGame($game);
+            while (! $game->isEnded()) {
+                $this->drawGame($game);
+                $this->promptValidGuess($game);
+                $this->drawGame($game);
+            }
 
             if ($game->playerWon()) {
                 $this->climate->out('<green>Congratulations, you win!</green>');
@@ -78,20 +82,6 @@ class Console
         }
 
         $this->climate->out('Thank you for playing!');
-    }
-
-    /**
-     * Enter a single game loop, playing until either the player wins or loses
-     *
-     * @param Game $game
-     */
-    private function playGame(Game $game)
-    {
-        while (! $game->isEnded()) {
-            $this->drawGame($game);
-            $this->promptValidGuess($game);
-            $this->drawGame($game);
-        }
     }
 
     /**
